@@ -3,8 +3,46 @@
   "author": "Mukesh",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-attiny85", "id": "tiny", "top": 0, "left": 0, "attrs": {} }
+    {
+      "type": "wokwi-attiny85",
+      "id": "tiny",
+      "top": -1.2,
+      "left": -4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -61.2,
+      "left": -44.2,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -24.85,
+      "left": -9.6,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn1",
+      "top": 55.4,
+      "left": 28.8,
+      "attrs": { "color": "green", "xray": "1" }
+    }
   ],
-  "connections": [],
+  "connections": [
+    ["led1:A", "r1:1", "green", ["v0"]],
+    ["tiny:PB0", "r1:2", "green", ["h27.6", "v-18"]],
+    ["led1:C", "tiny:GND", "green", ["v57.6", "h0.4"]],
+    [
+      "tiny:PB1",
+      "btn1:1.l",
+      "green",
+      ["v-8.4", "h28", "v57.6", "h-38.4", "v9.6"]
+    ],
+    ["btn1:2.r", "tiny:GND", "green", ["h20", "v-47.6"]]
+  ],
   "dependencies": {}
 }
